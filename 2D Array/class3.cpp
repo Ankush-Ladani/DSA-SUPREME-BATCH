@@ -61,21 +61,101 @@ void transposeArray(int brr[][3], int rows, int cols, int transpose[][3])
 
 int main()
 {
+    vector<int> arr{1, 2, 3, 6, 3, 6, 1};
+    vector<int> brr(7);
+
+    for (int i = 0; i < 7; i++)
+    {
+        int count = 0;
+        for (int j = i + 1; j < 7; j++)
+        {
+            if (arr[i] == arr[j])
+            {
+                ++count;
+            }
+        }
+        if (count > 1)
+        {
+            brr.push_back(arr[i]);
+        }
+    }
+
+    for (int i = 0; i < brr.size(); i++)
+    {
+        cout << brr[i] << " ";
+    }
+
+    // MOVE ALL NEGATIVE NO'S TO LEFT SIDE OF AN ARRAY
+    // vector<int> arr{-12, 11, -13, -5, 6, -7, 5, -3, -6};
+    // int start = 0, end = arr.size() - 1;
+
+    // while (start <= end)
+    // {
+    //     if (arr[start] < 0)
+    //     {
+    //         start++;
+    //     }
+    //     else if (arr[start] > arr[end])
+    //     {
+    //         swap(arr[start], arr[end]);
+    //         start++;
+    //         end--;
+    //     }
+    //     else
+    //     {
+    //         swap(arr[start], arr[end]);
+    //         end--;
+    //     }
+    // }
+    // for (int i = 0; i < arr.size(); i++)
+    // {
+    //     cout << arr[i] << " ";
+    // }
+
+    // SORT 0'S , 1'S AND 2'S
+
+    // vector<int> arr{0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1};
+    // int low = 0, mid = 0, hi = 11;
+
+    // while (mid <= hi)
+    // {
+    //     if (arr[mid] == 0)
+    //     {
+    //         swap(arr[low], arr[mid]);
+    //         low++;
+    //         mid++;
+    //     }
+    //     else if (arr[mid] == 1)
+    //     {
+    //         mid++;
+    //     }
+    //     else if (arr[mid] == 2)
+    //     {
+    //         swap(arr[mid], arr[hi]);
+    //         hi--;
+    //     }
+    // }
+
+    // for (int i = 0; i < 12; i++)
+    // {
+    //     cout << arr[i] << " ";
+    // }
+
     // vector<vector<int>> arr{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-    vector<vector<int>> arr(5, vector<int>(5));
+    // vector<vector<int>> arr(5, vector<int>(5));
 
     // ABOVE IS FOR 5 ROWS AND 5 COLS
 
-    for (int i = 0; i < 3; i++)
-    {
-        // cout << i << " row " << endl;
-        for (int j = 0; j < arr[i].size(); j++)
-        {
-            // cout << j << " col " << endl;
-            cin >> arr[i][j];
-        }
-        cout << endl;
-    }
+    // for (int i = 0; i < 3; i++)
+    // {
+    // cout << i << " row " << endl;
+    //     for (int j = 0; j < arr[i].size(); j++)
+    //     {
+    // cout << j << " col " << endl;
+    //         cin >> arr[i][j];
+    //     }
+    //     cout << endl;
+    // }
 
     // cout << arr[1][2];
 
