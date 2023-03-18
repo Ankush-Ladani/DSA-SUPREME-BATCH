@@ -61,29 +61,73 @@ void transposeArray(int brr[][3], int rows, int cols, int transpose[][3])
 
 int main()
 {
-    vector<int> arr{1, 2, 3, 6, 3, 6, 1};
-    vector<int> brr(7);
+    vector<int> arr{10, 20, 30};
+    vector<int> brr{10, 20, 40};
+    vector<int> crr{10, 20, 70};
 
-    for (int i = 0; i < 7; i++)
+    vector<int> ans{0};
+
+    for (int i = 0; i < arr.size(); i++)
     {
-        int count = 0;
-        for (int j = i + 1; j < 7; j++)
+        for (int j = 0; j < brr.size(); j++)
         {
-            if (arr[i] == arr[j])
+            for (int k = 0; k < crr.size(); k++)
             {
-                ++count;
+                if (arr[i] == brr[j] == crr[k])
+                {
+                    ans.push_back(crr[k]);
+                }
             }
         }
-        if (count > 1)
-        {
-            brr.push_back(arr[i]);
-        }
     }
 
-    for (int i = 0; i < brr.size(); i++)
+    for (int i = 0; i < ans.size(); i++)
     {
-        cout << brr[i] << " ";
+        cout << ans[i] << " ";
     }
+
+    // FIND FIRST DUPLICATE ELEMENT
+
+    // vector<int> arr{40, 20, 30, 10, 60, 40, 10};
+    // bool gotDuplicate = false;
+    // int duplicateNum = -1;
+    // for (int i = 0; i < arr.size(); i++)
+    // {
+    //     int count = 1;
+    //     if (!gotDuplicate)
+    //     {
+    //         for (int j = i + 1; j < arr.size(); j++)
+    //         {
+    //             if (arr[i] == arr[j])
+    //                 count++;
+    //         }
+    //     }
+    //     if (count > 1)
+    //     {
+    //         gotDuplicate = true;
+    //         duplicateNum = arr[i];
+    //     }
+    // }
+
+    // cout << duplicateNum << endl;
+
+    // FIND MISSING ELEMENT IN AN ARRAY
+
+    // vector<int> arr{3, 0, 1};
+    // int missingNum = -1;
+
+    // for (int i = 0; i < arr.size() + 1; i++)
+    // {
+    //     for (int j = 0; j < arr.size(); i++)
+    //     {
+    //         if (i == arr[j])
+    //             break;
+    //         else
+    //             missingNum = i;
+    //     }
+    // }
+
+    // cout << missingNum;
 
     // MOVE ALL NEGATIVE NO'S TO LEFT SIDE OF AN ARRAY
     // vector<int> arr{-12, 11, -13, -5, 6, -7, 5, -3, -6};
