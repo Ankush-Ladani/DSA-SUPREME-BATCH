@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <set>
 
 using namespace std;
 
@@ -61,30 +62,151 @@ void transposeArray(int brr[][3], int rows, int cols, int transpose[][3])
 
 int main()
 {
-    vector<int> arr{10, 20, 30};
-    vector<int> brr{10, 20, 40};
-    vector<int> crr{10, 20, 70};
+    // FIND COMMON ELEMENT IN 3 SORTED ARRAYS
 
-    vector<int> ans{0};
+    // vector<int> A{1, 5, 10, 20, 40, 80};
+    // vector<int> B{6, 7, 20, 80, 100};
+    // vector<int> C{3, 4, 15, 20, 30, 70, 80, 120};
 
-    for (int i = 0; i < arr.size(); i++)
+    vector<int> A{6, 50};
+    vector<int> B{6, 50};
+    vector<int> C{6, 50};
+
+    // vector<int> A{1, 1000, 20};
+    // vector<int> B{1, 1000, 200};
+    // vector<int> C{1, 1000, 2000};
+
+    // ANS - 20 , 80
+
+    int i = 0, j = 0, k = 0;
+    vector<int> ans;
+
+    int n1 = A.size();
+    int n2 = B.size();
+    int n3 = C.size();
+
+    set<int> st;
+
+    while (i < n1 && j < n2 && k < n3)
     {
-        for (int j = 0; j < brr.size(); j++)
+        if (A[i] == B[j] && B[j] == C[k])
         {
-            for (int k = 0; k < crr.size(); k++)
-            {
-                if (arr[i] == brr[j] == crr[k])
-                {
-                    ans.push_back(crr[k]);
-                }
-            }
+            // ans.push_back(A[i]);
+            st.insert(A[i]);
+            i++;
+            j++;
+            k++;
         }
+        else if (A[i] < B[j])
+        {
+            i++;
+        }
+        else if (B[j] < C[k])
+        {
+            j++;
+        }
+        else
+        {
+            k++;
+        }
+    }
+
+    for (auto i : st)
+    {
+        ans.push_back(i);
     }
 
     for (int i = 0; i < ans.size(); i++)
     {
         cout << ans[i] << " ";
     }
+
+    // WAVE PRINT
+
+    // 1 2 3 4
+    // 5 6 7 8
+    // 9 10 11 12
+    // 13 14 15 16
+
+    // vector<vector<int>> arr{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}, {10, 20, 30, 40}};
+
+    // int n = arr[0].size(); // rows
+    // int m = arr.size();    // columns
+
+    // vector<int> ans;
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (i % 2 == 0)
+    //     {
+    //         for (int j = 0; j < m; j++)
+    //         {
+    //             cout << arr[j][i] << " ";
+    //         }
+    //     }
+    //     else
+    //     {
+    //         for (int j = m - 1; j >= 0; j--)
+    //         {
+    //             cout << arr[j][i] << " ";
+    //         }
+    //     }
+    // }
+
+    // SPIRAL PRINT
+
+    // 1 2 3 4
+    // 5 6 7 8
+    // 9 10 11 12
+    // 13 14 15 16
+
+    // vector<vector<int>> arr{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+
+    // int n = arr.size();
+    // int m = arr[0].size();
+    // int total = n * m;
+
+    // int startingRow = 0;
+    // int endingCol = n - 1;
+
+    // int endingRow = m - 1;
+    // int startingCol = 0;
+
+    // int count = 0;
+
+    // vector<int> ans;
+
+    // while (count < total)
+    // {
+    //     for (int i = startingCol; i <= endingCol && count < total; i++)
+    //     {
+    //         ans.push_back(arr[startingRow][i]);
+    //         count++;
+    //     }
+    //     startingRow++;
+    //     for (int i = startingRow; i <= endingRow && count < total; i++)
+    //     {
+    //         ans.push_back(arr[i][endingCol]);
+    //         count++;
+    //     }
+    //     endingCol--;
+    //     for (int i = endingCol; i >= startingCol && count < total; i--)
+    //     {
+    //         ans.push_back(arr[endingRow][i]);
+    //         count++;
+    //     }
+    //     endingRow--;
+    //     for (int i = endingRow; i >= startingRow && count < total; i--)
+    //     {
+    //         ans.push_back(arr[i][startingCol]);
+    //         count++;
+    //     }
+    //     startingCol++;
+    // }
+    // for (int i = 0; i < total; i++)
+    // {
+    //     cout << ans[i] << " ";
+    // }
 
     // FIND FIRST DUPLICATE ELEMENT
 
