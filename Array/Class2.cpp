@@ -1,5 +1,4 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
 int findUnique(vector<int> arr, int n)
@@ -14,6 +13,87 @@ int findUnique(vector<int> arr, int n)
 
 int main()
 {
+    // FACTORIAL OF A NUMBER
+    vector<int> ans;
+    ans.push_back(1);
+    int n;
+    cin >> n;
+
+    int carry = 0;
+
+    for (int i = 2; i <= n; i++)
+    {
+        for (int j = 0; j < ans.size(); j++)
+        {
+            int x = ans[j] * i + carry;
+            ans[j] = x % 10;
+            carry = x / 10;
+        }
+        while (carry)
+        {
+            ans.push_back(carry % 10);
+            carry = carry / 10;
+        }
+        carry = 0;
+    }
+    reverse(ans.begin(), ans.end());
+
+    for (int i = 0; i < ans.size(); i++)
+    {
+        cout << ans[i];
+    }
+
+    // Add two numbers represented by two arrays
+
+    // vector<int> a{2, 1, 4};
+    // vector<int> b{9, 5, 4, 9};
+
+    // int i = a.size() - 1;
+    // int j = b.size() - 1;
+
+    // int carry = 0;
+    // string ans;
+
+    // while (i >= 0 && j >= 0)
+    // {
+    //     int x = a[i] + b[j] + carry;
+    //     int digit = x % 10;
+    //     ans.push_back(digit + '0');
+    //     carry = x / 10;
+    //     i--;
+    //     j--;
+    // }
+    // while (i >= 0)
+    // {
+    //     int x = a[i] + 0 + carry;
+    //     int digit = x % 10;
+    //     ans.push_back(digit + '0');
+    //     carry = x / 10;
+    //     i--;
+    // }
+    // while (j >= 0)
+    // {
+    //     int x = 0 + b[j] + carry;
+    //     int digit = x % 10;
+    //     ans.push_back(digit + '0');
+    //     carry = x / 10;
+    //     j--;
+    // }
+
+    // if (carry)
+    // {
+    //     carry = carry / 10;
+    //     ans.push_back(carry + '0');
+    // }
+
+    // while (ans[ans.size() - 1] == 0)
+    // {
+    //     ans.pop_back();
+    // }
+
+    // reverse(ans.begin(), ans.end());
+    // cout << ans;
+
     // vector<int> prices{7, 1, 5, 3, 6, 4};
 
     // int maxProfit = INT16_MIN;
@@ -129,7 +209,7 @@ int main()
     //     cin >> c[i];
     // }
 
-    // Q - 4 Triplet Sum Problem
+    // Q - 5 Triplet Sum Problem
 
     // for (int i = 0; i < a.size(); i++)
     // {
