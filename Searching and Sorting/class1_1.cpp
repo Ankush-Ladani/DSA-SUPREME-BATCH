@@ -85,7 +85,7 @@ int search(int ar[], int size)
 int main()
 {
 
-    // FIND MISSING ELEMENT
+    // FIND MISSING ELEMENT ( FOR SORTED ARRAY ONLY )
 
     int ar[] = {1, 2, 3, 4, 5, 6, 8};
     int size = sizeof(ar) / sizeof(ar[0]);
