@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 
 using namespace std;
 
@@ -72,20 +73,136 @@ int findKey(vector<int> arr, int key, int size)
     return -1;
 }
 
+int findQuotient(int dividend, int divisor)
+{
+    int s = 0;
+    int e = abs(dividend);
+
+    int ans;
+
+    int mid = s + (e - s) / 2;
+
+    while (s <= e)
+    {
+        if (mid * abs(divisor) == abs(dividend))
+        {
+            if ((divisor < 0 && dividend < 0) || (divisor > 0 && dividend > 0))
+            {
+                return mid;
+            }
+            else
+            {
+                return -1 * mid;
+            }
+        }
+        else if (mid * abs(divisor) > abs(dividend))
+        {
+            e = mid - 1;
+        }
+        else
+        {
+            ans = mid;
+            s = mid + 1;
+        }
+        mid = s + (e - s) / 2;
+    }
+    if ((divisor < 0 && dividend < 0) || (divisor > 0 && dividend > 0))
+    {
+        return ans;
+    }
+    else
+    {
+        return -1 * ans;
+    }
+}
+
 int main()
 {
+    // DIVIDE 2 NO'S USING BINARY SEARCH
+
+    int dividend;
+    cout << "Enter dividend : " << endl;
+    cin >> dividend;
+
+    int divisor;
+    cout << "Enter divisor : " << endl;
+    cin >> divisor;
+
+    int precision;
+    cout << "Enter Precision : " << endl;
+    cin >> precision;
+
+    double ans = findQuotient(dividend, divisor);
+    // cout << ans << endl;
+
+    double val = 0.1;
+
+    for (int i = 0; i < precision; i++)
+    {
+        for (double j = ans; j * abs(divisor) <= abs(dividend); j = j + val)
+        {
+            ans = j;
+        }
+        val = val / 10;
+    }
+    if ((divisor < 0 && dividend < 0) || (divisor > 0 && dividend > 0))
+    {
+        cout << ans;
+    }
+    else
+    {
+        cout << -1 * ans;
+    }
+
+    // SEARCH IN 2D ARRAY USING BINARY SEARCH
+    // vector<vector<int>> arr = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+
+    // int key;
+    // cout << "Enter Key : " << endl;
+    // cin >> key;
+
+    // int s = 0;
+    // int n = arr.size();
+    // int m = arr[0].size();
+
+    // int elements = n * m;
+
+    // int e = elements - 1;
+
+    // int mid = s + (e - s) / 2;
+
+    // while (s <= e)
+    // {
+    //     int row = mid / m;
+    //     int cols = mid % m;
+
+    //     if (arr[row][cols] == key)
+    //     {
+    //         cout << mid << endl;
+    //         break;
+    //     }
+    //     else if (arr[row][cols] > key)
+    //     {
+    //         e = mid - 1;
+    //     }
+    //     else
+    //     {
+    //         s = mid + 1;
+    //     }
+    //     mid = s + (e - s) / 2;
+    // }
 
     // Search in an almost sorted array
 
-    vector<int> arr{10, 3, 40, 20, 50, 80, 70, 90};
-    int key;
-    cin >> key;
+    // vector<int> arr{10, 3, 40, 20, 50, 80, 70, 90};
+    // int key;
+    // cin >> key;
 
-    int n = arr.size();
+    // int n = arr.size();
 
-    int ans = findKey(arr, key, n);
+    // int ans = findKey(arr, key, n);
 
-    cout << ans << endl;
+    // cout << ans << endl;
 
     // SQUARE ROOT OF A NUMBER
 
