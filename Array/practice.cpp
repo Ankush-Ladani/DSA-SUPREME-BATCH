@@ -19,12 +19,65 @@ int removeDuplicate(vector<int> arr, int n)
     return i + 1;
 }
 
+bool check(vector<int> arr, int n)
+{
+    int count = 0;
+
+    for (int i = 1; i < n; i++)
+    {
+        if (arr[i - 1] > arr[i])
+        {
+            count++;
+        }
+    }
+    if (arr[n - 1] > arr[0])
+        count++;
+
+    return count <= 1;
+}
+
 int main()
 {
-    vector<int> arr{1, 2, 2, 3, 4, 4, 5};
+    // vector<int> arr{1, 2, 2, 3, 4, 4, 5};
 
-    int n = arr.size();
+    // int n = arr.size();
 
     // int findOriginalArraySize = removeDuplicate(arr, n);
     // cout << findOriginalArraySize << endl;
+
+    // ROTATE AN ARRAY BY K TIMES
+
+    // vector<int> arr{1, 2, 3, 4, 5, 6, 7};
+    // int k;
+    // cin >> k;
+
+    // int n = arr.size();
+
+    // for (int i = 0; i < arr.size(); i++)
+    // {
+    //     cout << arr[i] << " ";
+    // }
+
+    // cout << endl;
+
+    // vector<int> temp(n);
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     temp[(i + k) % n] = arr[i];
+    // }
+
+    // arr = temp;
+
+    // for (int i = 0; i < arr.size(); i++)
+    // {
+    //     cout << arr[i] << " ";
+    // }
+
+    vector<int> arr{3, 3};
+    int n = arr.size();
+
+    bool isArrayRotatedAndSorted = check(arr, n);
+
+    cout << isArrayRotatedAndSorted << endl;
 }
