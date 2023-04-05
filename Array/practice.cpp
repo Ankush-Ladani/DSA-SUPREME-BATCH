@@ -36,8 +36,47 @@ bool check(vector<int> arr, int n)
     return count <= 1;
 }
 
+// int classTest(int n, vector<int> a, int k)
+// {
+//     vector<int> maxi{0};
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (a[i] > maxi.back())
+//         {
+//             maxi.push_back(a[i]);
+//         }
+//     }
+//     cout << maxi[k];
+//     return maxi[k - 1];
+// }
+
+int classTest(int n, vector<int> &a, int k)
+{
+    // Write your code here.
+    int ans = -1;
+    int i = 0;
+    sort(a.begin(), a.end());
+    for (i = 0; i < n; i++)
+    {
+        if (k == n - i)
+        {
+            ans = a[i];
+            break;
+        }
+    }
+    return ans;
+}
+
 int main()
 {
+    int n, k;
+    cin >> n >> k;
+    vector<int> marks{5, 4, 4, 5};
+
+    int ans = classTest(n, marks, k);
+
+    cout << ans;
+
     // vector<int> arr{1, 2, 2, 3, 4, 4, 5};
 
     // int n = arr.size();
@@ -74,10 +113,10 @@ int main()
     //     cout << arr[i] << " ";
     // }
 
-    vector<int> arr{3, 3};
-    int n = arr.size();
+    // vector<int> arr{3, 3};
+    // int n = arr.size();
 
-    bool isArrayRotatedAndSorted = check(arr, n);
+    // bool isArrayRotatedAndSorted = check(arr, n);
 
-    cout << isArrayRotatedAndSorted << endl;
+    // cout << isArrayRotatedAndSorted << endl;
 }
